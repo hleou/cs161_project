@@ -1,18 +1,20 @@
 import sys
-from LCS import LCS
+from LCS import LCS_reg
 
-def cut(string, k):
+def cut(string,k):
 	return string[k:]+string[0:k]
 
-def CLCS(A, B):
+def CLCS(A,B):
 	m = len(A)
 	n = len(B)
 	max_len = -float('inf')
+	max_lcs = ''
 	for k in range(m):
-		len_ = LCS(cut(A, k), B)
+		lcs,path,len_ = LCS_reg(cut(A,k),B,True)
 		if len_ > max_len:
 			max_len = len_
-	return max_len
+			max_lcs = lcs
+	return (max_lcs, max_len)
 
 def main():
 	if len(sys.argv) != 1:
