@@ -8,13 +8,11 @@ def CLCS(A,B):
 	m = len(A)
 	n = len(B)
 	max_len = -float('inf')
-	max_lcs = ''
 	for k in range(m):
-		lcs,path,len_ = LCS_reg(cut(A,k),B,True)
+		len_ = LCS_reg(cut(A,k),B,False)
 		if len_ > max_len:
 			max_len = len_
-			max_lcs = lcs
-	return (max_lcs, max_len)
+	return max_len
 
 def main():
 	if len(sys.argv) != 1:
